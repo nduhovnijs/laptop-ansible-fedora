@@ -1,0 +1,6 @@
+- name: Install dependencies for Ansible
+  dnf: 
+    name: 
+      - python3-psutil
+    state: latest
+  become: true

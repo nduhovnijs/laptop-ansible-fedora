@@ -1,0 +1,10 @@
+- name: Install Gnome must haves
+  dnf: 
+    name:
+      - gnome-tweaks
+  become: true
+
+- name: Configure available keyboard layouts in Gnome
+  dconf:
+    key: "/org/gnome/desktop/input-sources/sources"
+    value: "[('xkb', 'lv'), ('xkb', 'ru')]"

@@ -1,0 +1,63 @@
+- name: Add RPM Fusion repo
+  dnf:
+    name: 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm'
+    state: present
+  become: true
+
+- name: Add VS Code repo
+  copy:
+    src: "{{ role_path }}/files/vscode.repo"
+    dest: /etc/yum.repos.d/vscode.repo
+  become: true
+
+- name: Upgrade all packages
+  dnf:
+    name: "*"
+    state: latest
+  become: true
+
+- name: Add the flathub flatpak repository remote to the user installation
+  flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Install various software via DNF
+  dnf: 
+    name:
+      - code  # VS Code
+      - snapd
+  become: true
+
+- name: Install Bitwarden
+  flatpak:
+    name: com.bitwarden.desktop
+  become: true
+
+- name: Install Onlyoffice
+  flatpak:
+    name: org.onlyoffice.desktopeditors
+  become: true
+
+- name: Install Pycharm
+  flatpak:
+    name: com.jetbrains.PyCharm-Community
+  become: true
+
+- name: Install Slack
+  flatpak:
+    name: com.slack.Slack
+  become: true
+
+- name: Install MEGA client
+  dnf:
+    name: 'https://mega.nz/linux/MEGAsync/Fedora_32/x86_64/megasync-4.3.1-1.1.x86_64.rpm'
+    state: present
+  become: true
+
+- name: Install MEGA Nautilus integration
+  dnf:
+    name: 'https://mega.nz/linux/MEGAsync/Fedora_32/x86_64/nautilus-megasync-3.6.6-2.1.x86_64.rpm'
+    state: present
+  become: true
