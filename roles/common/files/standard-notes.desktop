@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Encoding=UTF-8
+Name=Standard Notes
+Comment=
+Exec=/home/nduhovnijs/Standard-Notes-3.4.1.AppImage
+Icon=application.png
+Terminal=false
