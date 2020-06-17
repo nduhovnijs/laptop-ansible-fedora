@@ -21,6 +21,7 @@
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
 
 - name: Install various software via DNF
   dnf: 
@@ -59,10 +60,4 @@
   dnf:
     name: 'https://mega.nz/linux/MEGAsync/Fedora_32/x86_64/nautilus-megasync-3.6.6-2.1.x86_64.rpm'
     state: present
-  become: true
-
-- name: Add Standard Notes desktop icon
-  copy:
-    src: "{{ role_path }}/files/standard-notes.desktop"
-    dest: /home/nduhovnijs/.local/share/applications/standard-notes.desktop
   become: true
