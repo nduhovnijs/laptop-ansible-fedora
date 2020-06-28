@@ -44,10 +44,11 @@
     name: com.jetbrains.PyCharm-Community
   become: true
 
-- name: Install Slack
-  flatpak:
-    name: com.slack.Slack
-  become: true
+# Install Slack manually: containerized one opens URLs in empty Firefox
+#- name: Install Slack
+#  flatpak:
+#    name: com.slack.Slack
+#  become: true
 
 - name: Install MEGA client
   dnf:
