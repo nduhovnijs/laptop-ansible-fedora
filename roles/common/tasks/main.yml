@@ -26,6 +26,7 @@
   dnf: 
     name:
       - code  # VS Code
+      - gimp
       - snapd
   become: true
 
@@ -34,10 +35,11 @@
     name: com.bitwarden.desktop
   become: true
 
-- name: Install Onlyoffice
-  flatpak:
-    name: org.onlyoffice.desktopeditors
-  become: true
+# Install Onlyoffice manually: problem making default otherwise
+#- name: Install Onlyoffice
+#  flatpak:
+#    name: org.onlyoffice.desktopeditors
+#  become: true
 
 - name: Install Pycharm
   flatpak:
