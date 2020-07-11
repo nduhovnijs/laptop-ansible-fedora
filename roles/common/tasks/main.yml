@@ -1,3 +1,6 @@
+- hostname:
+    name: haven
+
 - name: Add RPM Fusion repo
   dnf:
     name: 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm'
@@ -51,18 +54,6 @@
 #  flatpak:
 #    name: com.slack.Slack
 #  become: true
-
-- name: Install MEGA client
-  dnf:
-    name: 'https://mega.nz/linux/MEGAsync/Fedora_32/x86_64/megasync-4.3.1-1.1.x86_64.rpm'
-    state: present
-  become: true
-
-- name: Install MEGA Nautilus integration
-  dnf:
-    name: 'https://mega.nz/linux/MEGAsync/Fedora_32/x86_64/nautilus-megasync-3.6.6-2.1.x86_64.rpm'
-    state: present
-  become: true
 
 - name: Add Standard Notes desktop icon
   copy:
