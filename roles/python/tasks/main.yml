@@ -1,7 +1,0 @@
-- name: Install python libraries via DNF
-  dnf: 
-    name:
-      - python3-devel
-      - python3-pip  
-      - net-snmp-devel
-  become: true

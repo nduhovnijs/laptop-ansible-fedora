@@ -1,14 +1,14 @@
-- name: Install FreeType engine with the patented subpixel rendering enabled
-  dnf:
-    name: freetype-freeworld
-    state: latest
-  become: true
+#- name: Install FreeType engine with the patented subpixel rendering enabled
+#  dnf:
+#    name: freetype-freeworld
+#    state: latest
+#  become: true
 
-- name: Copy font engine config
-  copy:
-    src: "{{ role_path }}/files/local.conf"
-    dest: /etc/fonts/local.conf
-  become: true
+#- name: Copy font engine config
+#  copy:
+#    src: "{{ role_path }}/files/local.conf"
+#    dest: /etc/fonts/local.conf
+#  become: true
 
 - name: Disable auto-switch for Bluetooth profiles (to stay on A2DP)
   lineinfile:

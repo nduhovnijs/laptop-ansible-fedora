@@ -1,23 +1,5 @@
 - hostname:
-    name: haven
-
-- name: Add RPM Fusion repo
-  dnf:
-    name: 'https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-32.noarch.rpm'
-    state: present
-  become: true
-
-- name: Add VS Code repo
-  copy:
-    src: "{{ role_path }}/files/vscode.repo"
-    dest: /etc/yum.repos.d/vscode.repo
-  become: true
-
-- name: Upgrade all packages
-  dnf:
-    name: "*"
-    state: latest
-  become: true
+    name: {{ host_name }}
 
 - name: Add the flathub flatpak repository remote to the user installation
   flatpak_remote:
@@ -25,38 +7,15 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Install various software via DNF
-  dnf: 
-    name:
-      - code  # VS Code
-      - gimp
-      - snapd
-  become: true
-
-- name: Install Bitwarden
-  flatpak:
-    name: com.bitwarden.desktop
-  become: true
-
-# Install Onlyoffice manually: problem making default otherwise
-#- name: Install Onlyoffice
-#  flatpak:
-#    name: org.onlyoffice.desktopeditors
+#- name: Add Standard Notes desktop icon
+#  copy:
+#    src: "{{ role_path }}/files/standard-notes.desktop"
+#    dest: /home/nduhovnijs/.local/share/applications/standard-notes.desktop
 #  become: true
 
-- name: Install Pycharm
-  flatpak:
-    name: com.jetbrains.PyCharm-Community
-  become: true
-
-# Install Slack manually: containerized one opens URLs in empty Firefox
-#- name: Install Slack
-#  flatpak:
-#    name: com.slack.Slack
-#  become: true
-
-- name: Add Standard Notes desktop icon
+- name: Add a script for switching between Bluetooth profiles
   copy:
-    src: "{{ role_path }}/files/standard-notes.desktop"
-    dest: /home/nduhovnijs/.local/share/applications/standard-notes.desktop
+    src: "{{ role_path }}/files/bluetooth_profile.sh"
+    dest: "{{ home_dir }}/bin/bluetooth_profile.sh"
+    mode: 0755
   become: true

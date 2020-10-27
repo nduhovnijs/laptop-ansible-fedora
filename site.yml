@@ -5,13 +5,7 @@
     - fedora
     - golang
     - gnome
-    - python
     #- openconnect # install official GlobalProtect instead
   vars:
     home_dir: /home/nduhovnijs
-
-# Manually install Standard Notes from https://standardnotes.org/
-# Manually install Google Chrome
-# Manually install Microsoft Teams
-# Manually install Gnome extension "GlobalProtect Indicator" and Global Protect itself
-# Manually install Gnome extension "KStatusNotifierItem/AppIndicator Support"
+    host_name: haven

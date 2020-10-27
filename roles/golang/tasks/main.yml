@@ -1,4 +1,5 @@
-# Install Golang manually first - https://golang.org/dl/
+#~/.profile has the stuff NOT specifically related to bash, such as environment variables (PATH and friends)
+#~/.bashrc has anything you'd want at an interactive command line. Command prompt, EDITOR variable, bash aliases for my use
 
 - name: Install Golang
   dnf: 
@@ -6,13 +7,31 @@
       - golang
   become: true
 
-- name: add Golang and Golang's bin to systems path
-  lineinfile:
-    path: "{{ home_dir }}/.bashrc"
-    line: PATH=$PATH:/usr/local/go/bin:{{ home_dir }}/go/bin
-    create: yes
-
 - name: create go directory
   file:
-    path: "{{ home_dir }}/go/src"
+    path: "{{ home_dir }}/go"
     state: directory
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.profile"
+    line: export GOROOT=/usr/local/go
+    create: yes
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.profile"
+    line: export GOPATH=/home/nduhovnijs/go
+    create: yes
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.profile"
+    line: export PATH=$GOPATH/bin:$PATH
+    create: yes
+
+- name: add Golang settings
+  lineinfile:
+    path: "{{ home_dir }}/.profile"
+    line: export PATH=$PATH:$GOROOT/bin
+    create: yes

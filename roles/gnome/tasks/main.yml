@@ -1,7 +1,6 @@
 - name: Install Gnome must haves
   dnf: 
     name:
-      - deja-dup  # Backup
       - gnome-tweaks
   become: true
 
