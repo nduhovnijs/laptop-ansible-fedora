@@ -10,13 +10,13 @@
 #    dest: /etc/fonts/local.conf
 #  become: true
 
-- name: Disable auto-switch for Bluetooth profiles (to stay on A2DP)
-  lineinfile:
-    path: "/etc/pulse/default.pa"
-    regexp: 'load-module module-bluetooth-policy'
-    line: 'load-module module-bluetooth-policy auto_switch=0'
-    create: yes
-  become: true
+#- name: Disable auto-switch for Bluetooth profiles (to stay on A2DP)
+#  lineinfile:
+#    path: "/etc/pulse/default.pa"
+#    regexp: 'load-module module-bluetooth-policy'
+#    line: 'load-module module-bluetooth-policy auto_switch=0'
+#    create: yes
+#  become: true
 
 - name: Install multimedia codecs
   dnf: 
